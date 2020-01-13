@@ -30,3 +30,17 @@ const formReducer = (state = initialState.form, action) => {
             return state
     }
 }
+
+const charactersReducer = (state = initialState.characters, action) => {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
+const rootReducer = combineReducers({
+    form: formReducer,
+    characters: charactersReducer
+})
+
+export default rootReducer
