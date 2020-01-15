@@ -9,7 +9,7 @@ const store = createStore(rootReducer)
 const render = () => {
     ReactDOM.render(
         <App store={store} />,
-        document.getElementById('roote')
+        document.getElementById('root')
     )
 }
 
