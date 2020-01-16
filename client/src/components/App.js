@@ -6,7 +6,7 @@ class App extends Component {
   render(){
       return (
         <div>
-          <AppForm store={this.props.store} />
+          <AddForm store={this.props.store} />
           <CharacterList store={this.props.store} />
         </div>
       )
