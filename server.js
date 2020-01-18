@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import Character from './character';
 
 const app = express()
 const port = 3001
@@ -14,11 +15,16 @@ mongoose.connect(dbUrl, dbErr => {
     else console.log('db connected')
 
     app.post('/api/characters', (request, response) => {
-        console.log('receive POST request')
-        console.log(request.body)
-        response.status(200).send()
+        const { name, age } = request.body
+        new Character({
+            name,
+            age
+        }).save(err => {
+            if (err) response.status(500)
+            else response.status(200).send(`${name}(${age}) was successfully created.`)
+        })
     })
-    
+
     app.listen(port, err => {
         if (err) throw new Error(err)
         else console.log(`listening on port ${port}`)
