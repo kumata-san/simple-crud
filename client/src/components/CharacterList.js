@@ -31,7 +31,7 @@ const CharacterList = ({ store }) => {
 
     const handleDeleteCharacter = id => {
         store.dispatch(requestData())
-        // axios.delete('/api/characters')とやりたいができないので
+        // axios.delete('/api/characters', { id })とやりたいができないので
         axios({
             method: 'delete',
             url: '/api/characters',
@@ -43,7 +43,7 @@ const CharacterList = ({ store }) => {
             const _characterArray = response.data
             store.dispatch(receiveDataSuccess(_characterArray))
         })
-        .chatch(err => {
+        .catch(err => {
             console.error(new Error(err))
             store.dispatch(receiveDataFailed())
         })

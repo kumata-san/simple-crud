@@ -9,17 +9,21 @@ const AddForm = ({ store }) => {
     const { name, age } = store.getState().form // storeからFormの内容を取得
 
     const handleSubmit = e => {
+        e.preventDefault()
 
+        store.dispatch(requestData())
     axios.post('/api/characters', {
         name,
         age,
     })
     .then(response => {
-        console.log(response)
         store.dispatch(initializeForm())
+        const characterArray = response.data
+        store.dispatch(receiveDataSuccess(characterArray))
     })
     .catch(err => {
         console.error(new Error(err))
+        store.dispatch(receiveDataFailed())
     })
 }
 
