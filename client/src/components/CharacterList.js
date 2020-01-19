@@ -17,6 +17,18 @@ const CharacterList = ({ store }) => {
             store.dispatch(receiveDataFailed())
         })
     }
+
+    const handleUpdateCharacter = id => {
+        store.dispatch(requestData())
+        axios.put('/api/characters', {
+            id
+        })
+        .then(response => {
+            const _characterArray = response.data
+            store.dispatch(receiveDataSuccess(_characterArray))
+        })
+    }
+
     return (
         <div>
             {
@@ -28,6 +40,7 @@ const CharacterList = ({ store }) => {
                         {characterArray.map(character => (
                             <li key={character._id}>
                                 {`${character.name}(${character.age})`}
+                                <button onClick={() => handleUpdateCharacter(character._id)}>+1</button>
                             </li>
                         ))}
                     </ul>
