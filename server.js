@@ -7,8 +7,8 @@ import Character from './character';
 const app = express()
 const port = process.env.PORT || 3001
 // const dbUrl = 'mongodb://localhost/crud'
-// const dbUrl = process.env.MONGODB_URI
-const dbUrl = 'mongodb://fathomless-forest-49802.herokuapp.com'
+const dbUrl = process.env.MONGODB_URI
+// const dbUrl = 'mongodb://fathomless-forest-49802.herokuapp.com'
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(bodyParser.urlencoded({ extended: true }))
