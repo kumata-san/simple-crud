@@ -1,12 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
 import mongoose from 'mongoose';
 import Character from './character';
 
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3001
 const dbUrl = 'mongodb://localhost/crud'
 
+app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
