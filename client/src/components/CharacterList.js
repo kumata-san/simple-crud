@@ -31,6 +31,7 @@ const CharacterList = ({ store }) => {
 
     const handleDeleteCharacter = id => {
         store.dispatch(requestData())
+        // axios.delete('/api/characters')とやりたいができないので
         axios({
             method: 'delete',
             url: '/api/characters',

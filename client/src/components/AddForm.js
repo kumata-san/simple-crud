@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { changeName, changeAge, initializeForm } from '../actions';
+import {
+     changeName, changeAge, initializeForm,
+     requestData, receiveDataSuccess, receiveDataFailed
+    } from '../actions';
 
 const AddForm = ({ store }) => {
     const { name, age } = store.getState().form // storeからFormの内容を取得
